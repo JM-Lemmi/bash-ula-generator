@@ -115,7 +115,7 @@ eui64="${first}${second_rev}${macu}fffe${macl}"
 
 # Convert from hex string representation to bytes before sha1sum
 # https://unix.stackexchange.com/a/82766
-globalid=$(echo -ne $(sed "s/../\\x&/g" <<< ${date}${eui64}) | sha1sum | cut -c23-32)
+globalid=$(echo -ne $(sed "s/../\\x&/g" <<< $(date)${eui64}) | sha1sum | cut -c23-32)
 ula=$(echo fd${globalid} | sed "s|\(....\)\(....\)\(....\)|\1:\2:\3::/48|")
 
 echo
